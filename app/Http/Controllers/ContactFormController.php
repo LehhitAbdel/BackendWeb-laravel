@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ContactFormSubmission;
+use Illuminate\Support\Facades\Mail;
+
 
 use Auth;
 
@@ -15,16 +17,30 @@ class ContactFormController extends Controller
         return view('/contactform');
     }
 
-    public function store(Request $request)
+    public function send(Request $request)
     {
         $request->validate([
-            'message' => 'required|string'
+            'message' => 'required|string',
+            'email' => 'required|email'
         ]);
 
-        $submission = new ContactFormSubmission();
-        $submission->user_id = Auth::id(); // Assuming the user is authenticated
-        $submission->message = $request->message;
-        $submission->save();
+        //TODO send form in email to admin.
+        // Prepare the email data
+        $data = [
+            'email' => $request->email,
+            'message' => $request->message
+        ];
+
+        /* cant actually send email cuz of.env and configurations etc..
+        
+        Mail::send('emails.contact', $data, function($message) use ($data) {
+            $message->to('admin@ehb.be') // Replace with actual admin email
+                    ->subject('New Contact Form Submission');
+            $message->from($data['email']);
+        }); 
+        
+        */
+
 
         // Redirect or return response
         return back()->with('success', 'Your message has been sent successfully.');

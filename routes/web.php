@@ -29,9 +29,16 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
+//-------PUBLIC-------    
 
 //about us
 Route::get('/about', [AboutController::class, 'show'])->name('about');
+
+//contactform
+Route::get('/contactform', [ContactFormController::class, 'index'])->name('contactform');
+Route::post('/contactform', [ContactFormController::class, 'send'])->name('contact.send');
+
+//myprofile
 
 
 Route::middleware('auth')->group(function () {
@@ -39,9 +46,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
-    //contactform
-    Route::get('/contactform', [ContactFormController::class, 'index'])->name('contactform');
-    Route::post('/contactform', [ContactFormController::class, 'store'])->name('contact.store');
     
     //FAQ
 });

@@ -6,17 +6,24 @@
     </x-slot>
 
     <div class="py-12">
-    @if (session('success'))
-    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
-        <p class="font-bold">Success</p>
-        <p>{{ session('success') }}</p>
-    </div>
-    @endif
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                @if (session('success'))
+                <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
+                    <p class="font-bold">Success</p>
+                    <p>{{ session('success') }}</p>
+                </div>
+                @endif
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form method="POST" action="{{ route('contact.store') }}">
+                    <form method="POST" action="{{ route('contact.send')}}">
                         @csrf
+
+                        <!-- Add this inside the <form> tag -->
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Your Email:</label>
+                            <input type="email" name="email" id="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        </div>
+
 
                         <div class="mb-4">
                             <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Ask a question or write a message:</label>
