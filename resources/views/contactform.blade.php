@@ -19,7 +19,7 @@
                         @csrf
 
                         <div class="mb-4">
-                            <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message:</label>
+                            <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Ask a question or write a message:</label>
                             <textarea name="message" id="message" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" rows="4" required></textarea>
                         </div>
 
