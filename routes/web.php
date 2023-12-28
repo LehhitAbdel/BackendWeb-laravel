@@ -31,7 +31,7 @@ Route::get('/dashboard', function () {
 
 
 //about us
-Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/about', [AboutController::class, 'show'])->name('about');
 
 
 Route::middleware('auth')->group(function () {
