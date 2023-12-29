@@ -39,6 +39,8 @@ Route::get('/contactform', [ContactFormController::class, 'index'])->name('conta
 Route::post('/contactform', [ContactFormController::class, 'send'])->name('contact.send');
 
 //myprofile
+Route::get('/user/{id}', [UserController::class, 'show'])->name('user.profile');
+
 
 
 Route::middleware('auth')->group(function () {
