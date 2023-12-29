@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware([])->name('dashboard');
 
 
 //-------PUBLIC-------    
@@ -42,9 +42,12 @@ Route::post('/contactform', [ContactFormController::class, 'send'])->name('conta
 
 
 Route::middleware('auth')->group(function () {
+    Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
     
     
     //FAQ
