@@ -24,9 +24,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware([])->name('dashboard');
+Route::get('/news', function () {
+    return view('news');
+})->middleware([])->name('news');
 
 
 //-------PUBLIC-------    
