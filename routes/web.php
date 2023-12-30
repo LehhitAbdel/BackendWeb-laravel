@@ -24,10 +24,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/news', function () {
-    return view('news');
-})->middleware([])->name('news');
-
 
 //-------PUBLIC-------    
 
@@ -41,7 +37,9 @@ Route::post('/contactform', [ContactFormController::class, 'send'])->name('conta
 //myprofile
 Route::get('/user/{id}', [UserController::class, 'show'])->name('user.profile');
 
-
+//news posts
+Route::get('/news', [NewsPostController::class,'index'])->name('news');
+//-------AUTH USER------- 
 
 Route::middleware('auth')->group(function () {
     Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
@@ -49,10 +47,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+//-------ADMIN------- 
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::get('/news/create', [NewsPostController::class, 'create']);
+    Route::post('/news', [NewsPostController::class, 'store']);
+    Route::get('/news/{news}/edit', [NewsPostController::class, 'edit']);
+    Route::put('/news/{news}', [NewsPostController::class, 'update']);
+    Route::delete('/news/{news}', [NewsPostController::class, 'destroy']);
+});
 
-    
-    
-    //FAQ
+
 });
 
 require __DIR__.'/auth.php';
