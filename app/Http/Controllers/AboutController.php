@@ -14,8 +14,8 @@ class AboutController extends Controller
     public function show()
 {
     $sources = [
+        (object) ['title' => 'My git', 'url' => 'https://github.com/LehhitAbdel/BackendWeb-laravel'],
         (object) ['title' => 'Laravel documentation', 'url' => 'https://laravel.com'],
-        (object) ['title' => 'Source 2 Title', 'url' => 'http://source2.com'],
         // Add more sources as needed
     ];
 
