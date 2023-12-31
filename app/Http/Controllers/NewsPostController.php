@@ -26,16 +26,17 @@ class NewsPostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'content' => 'required',
-            'cover_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'cover_image' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
+        if ($request->hasFile('cover_image')) {
+            $path = $request->file('cover_image')->store('news', 'public');
     
-        $imageName = time().'.'.$request->cover_image->extension();  
-        $request->cover_image->move(public_path('images'), $imageName);
-    
+        
+        }
         NewsPost::create([
             'user_id' => auth()->id(),
             'title' => $request->title,
-            'cover_image' => $imageName, // Assuming $imageName is set from the image upload code
+            'cover_image' => $path,
             'content' => $request->content,
             'published_at' => Carbon::now(),
         ]);
