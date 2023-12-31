@@ -15,6 +15,7 @@
                         <img src="{{ $post->cover_image }}" alt="Cover Image">
                         <div>{{ $post->content }}</div>
                         <small>Published on: {{ $post->published_at}}</small>
+                        <p>Posted by: <a href="{{ route('user.profile', $post->user->id) }}" class="font-bold underline">{{ $post->user->name }}</a></p>
                     </div>
                     @endforeach
 
