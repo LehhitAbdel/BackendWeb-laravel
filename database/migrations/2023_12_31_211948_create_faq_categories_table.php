@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('faq_questions', function (Blueprint $table) {
+        Schema::create('faq_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('faq_categories');
-            $table->text('question');
-            $table->text('answer');
-            $table->foreignId('user_id')->constrained()->nullable();
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('f_a_q_questions');
+        Schema::dropIfExists('faq_categories');
     }
 };

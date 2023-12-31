@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NewsPostController;
-use App\Http\Controllers\FAQCategoryController;
-use App\Http\Controllers\FAQQuestionController;
+use App\Http\Controllers\FaqCategoryController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\AboutController;
 
@@ -40,6 +40,9 @@ Route::get('/user/{id}', [UserController::class, 'show'])->name('user.profile');
 //news posts
 Route::get('/news', [NewsPostController::class,'index'])->name('news');
 
+//faq
+Route::get('faqs', [FaqController::class, 'show']);
+
 //-------AUTH USER------- 
 
 Route::middleware('auth')->group(function () {
@@ -55,6 +58,10 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/news/{news}/edit', [NewsPostController::class, 'edit'])->name('news.edit');
     Route::put('/news/{news}', [NewsPostController::class, 'update']);
     Route::delete('/news/{news}', [NewsPostController::class, 'destroy'])->middleware('admin')->name('news.destroy');
+
+
+    Route::resource('faq-categories', FaqCategoryController::class);
+    Route::resource('faqs', FaqController::class);
 });
 
 
