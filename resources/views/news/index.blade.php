@@ -22,8 +22,8 @@
                     <div class="grid md:grid-cols-2 gap-4">
                         @foreach ($newsPosts as $post)
                             <div class="border border-gray-200 rounded-lg p-4">
-                                <h2 class="font-bold">{{ $post->title }}</h2>
-                                <img src="{{asset('Storage/' . $post->cover_image) }}" alt="Cover_Image" class="rounded-full h-32 w-32 object-cover">
+                                <h2 class="font-bold text-center">{{ $post->title }}</h2>
+                                <img src="{{asset('Storage/' . $post->cover_image) }}" alt="Cover_Image" class="object-cover w-50 h-34">
                                 <div>{{ $post->content }}</div>
                                 <small>Published on: {{ $post->published_at }}</small>
                                 <p>Posted by: <a href="{{ route('user.profile', $post->user->id) }}" class="font-bold underline">{{ $post->user->name }}</a></p>
