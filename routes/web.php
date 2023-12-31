@@ -53,7 +53,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::post('/news', [NewsPostController::class, 'store']);
     Route::get('/news/{news}/edit', [NewsPostController::class, 'edit']);
     Route::put('/news/{news}', [NewsPostController::class, 'update']);
-    Route::delete('/news/{news}', [NewsPostController::class, 'destroy']);
+    Route::delete('/news/{news}', [NewsPostController::class, 'destroy'])->middleware('admin')->name('news.destroy');
 });
 
 

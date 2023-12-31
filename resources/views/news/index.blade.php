@@ -27,7 +27,16 @@
                                 <div>{{ $post->content }}</div>
                                 <small>Published on: {{ $post->published_at }}</small>
                                 <p>Posted by: <a href="{{ route('user.profile', $post->user->id) }}" class="font-bold underline">{{ $post->user->name }}</a></p>
+                               
+                                @if(auth()->check() && auth()->user()->is_admin)
+                                <form action="{{ route('news.destroy', $post->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" onclick="return confirm('Are you sure you want to delete this?')" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                                </form>
+                                @endif
                             </div>
+
                         @endforeach
                     </div>
 
