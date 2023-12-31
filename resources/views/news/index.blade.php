@@ -28,13 +28,23 @@
                                 <small>Published on: {{ $post->published_at }}</small>
                                 <p>Posted by: <a href="{{ route('user.profile', $post->user->id) }}" class="font-bold underline">{{ $post->user->name }}</a></p>
                                
-                                @if(auth()->check() && auth()->user()->is_admin)
-                                <form action="{{ route('news.destroy', $post->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Are you sure you want to delete this?')" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
-                                </form>
-                                @endif
+                                <div class="flex justify-between items-center mt-4">
+                                    @if(auth()->check() && auth()->user()->is_admin)
+                                        <!-- Edit button -->
+                                        <a href="{{ route('news.edit', $post->id) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                            Edit
+                                        </a>
+                        
+                                        <!-- Delete button -->
+                                        <form action="{{ route('news.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    @endif
+                                </div>
                             </div>
 
                         @endforeach

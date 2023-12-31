@@ -39,6 +39,7 @@ Route::get('/user/{id}', [UserController::class, 'show'])->name('user.profile');
 
 //news posts
 Route::get('/news', [NewsPostController::class,'index'])->name('news');
+
 //-------AUTH USER------- 
 
 Route::middleware('auth')->group(function () {
@@ -51,7 +52,7 @@ Route::middleware('auth')->group(function () {
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/news/create', [NewsPostController::class, 'create']);
     Route::post('/news', [NewsPostController::class, 'store']);
-    Route::get('/news/{news}/edit', [NewsPostController::class, 'edit']);
+    Route::get('/news/{news}/edit', [NewsPostController::class, 'edit'])->name('news.edit');
     Route::put('/news/{news}', [NewsPostController::class, 'update']);
     Route::delete('/news/{news}', [NewsPostController::class, 'destroy'])->middleware('admin')->name('news.destroy');
 });
