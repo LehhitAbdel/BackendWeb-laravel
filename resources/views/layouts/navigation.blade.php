@@ -16,6 +16,10 @@
                         {{ __('News') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('faqs.publicIndex')" :active="request()->routeIs('faqs.publicIndex')">
+                        {{ __('FAQ') }}
+                    </x-nav-link>
+
 
                     <x-nav-link :href="route('contactform')" :active="request()->routeIs('contactform')">
                         {{ __('Contact us') }}

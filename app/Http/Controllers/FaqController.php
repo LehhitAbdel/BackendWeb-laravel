@@ -57,7 +57,7 @@ class FaqController extends Controller
         return redirect()->route('faqs.index');
     }
 
-    public function show()
+    public function publicIndex()
     {
         $categories = FaqCategory::with('faqs')->get();
         return view('faqs.index', compact('categories'));

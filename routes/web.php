@@ -41,7 +41,7 @@ Route::get('/user/{id}', [UserController::class, 'show'])->name('user.profile');
 Route::get('/news', [NewsPostController::class,'index'])->name('news');
 
 //faq
-Route::get('faqs', [FaqController::class, 'show']);
+Route::get('faqs', [FaqController::class, 'publicIndex'])->name('faqs.publicIndex');
 
 //-------AUTH USER------- 
 
@@ -61,7 +61,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 
 
     Route::resource('faq-categories', FaqCategoryController::class);
-    Route::resource('faqs', FaqController::class);
+    Route::resource('faqs', FaqController::class)->except(['index']);
 });
 
 
