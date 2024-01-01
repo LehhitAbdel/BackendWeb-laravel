@@ -16,6 +16,10 @@ class AboutController extends Controller
     $sources = [
         (object) ['title' => 'My git', 'url' => 'https://github.com/LehhitAbdel/BackendWeb-laravel'],
         (object) ['title' => 'Laravel documentation', 'url' => 'https://laravel.com'],
+        (object) ['title' => 'Chat GPT', 'url' => 'https://chat.openai.com'],
+        (object) ['title' => 'Laravel daily (youtube)', 'url' => 'https://www.youtube.com/@LaravelDaily'],
+
+
         // Add more sources as needed
     ];
 
