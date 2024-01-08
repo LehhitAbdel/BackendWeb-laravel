@@ -6,7 +6,7 @@
         </h2>
         @if(auth()->check() && auth()->user()->is_admin)
         <a href="{{ url('/faqs/create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Make an awnser
+            Make an answer
         </a>
         @endif
     </div>
@@ -25,7 +25,7 @@
 
             @if(auth()->user() && auth()->user()->is_admin)
                 <div class="flex items-center">
-                    <a href="{{ route('faqs.edit', $faq->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2 text-sm">
+                    <a href="{{ route('faqs.edit', $faq->id) }}" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2 text-sm">
                         Edit
                     </a>
                     <form method="POST" action="{{ route('faqs.destroy', $faq->id) }}" onsubmit="return confirm('Are you sure you want to delete this?')">
