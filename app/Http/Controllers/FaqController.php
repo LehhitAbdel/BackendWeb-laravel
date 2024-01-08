@@ -30,7 +30,7 @@ class FaqController extends Controller
         ]);
 
         Faq::create($request->all());
-        return redirect()->route('faqs.index');
+        return redirect()->route('faqs.publicIndex');
     }
 
     public function edit(Faq $faq)
@@ -48,13 +48,13 @@ class FaqController extends Controller
         ]);
 
         $faq->update($request->all());
-        return redirect()->route('faqs.index');
+        return redirect()->route('faqs.publicIndex');
     }
 
     public function destroy(Faq $faq)
     {
         $faq->delete();
-        return redirect()->route('faqs.index');
+        return redirect()->route('faqs.publicIndex');
     }
 
     public function publicIndex()
