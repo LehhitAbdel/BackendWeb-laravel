@@ -4,19 +4,29 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Faq;
+use App\Models\FaqCategory;
+use App\Models\NewsPost;
+use App\Models\ContactFormSubmission;
 
-class DatabaseSeeder extends Seeder
+
+
+
+class DatabaseSeeder extends Seeder 
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        // random users
+        User::factory(2)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // Create a specific admin user
+        User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@ehb.be',
+            'is_admin' => true,
+        ]);
+
     }
+
 }
