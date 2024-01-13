@@ -21,7 +21,7 @@ use App\Http\Controllers\AboutController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('news');
 });
 
 
@@ -30,9 +30,9 @@ Route::get('/', function () {
 //about us
 Route::get('/about', [AboutController::class, 'show'])->name('about');
 
-//contactform
-Route::get('/contactform', [ContactFormController::class, 'index'])->name('contactform');
-Route::post('/contactform', [ContactFormController::class, 'send'])->name('contact.send');
+//contact
+Route::get('/contact', [ContactFormController::class, 'index'])->name('contactform');
+Route::post('/contact', [ContactFormController::class, 'send'])->name('contact.send');
 
 //myprofile
 Route::get('/user/{id}', [UserController::class, 'show'])->name('user.profile');
