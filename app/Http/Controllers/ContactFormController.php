@@ -31,7 +31,7 @@ class ContactFormController extends Controller
             'content' => $request->get('message')
         ];
 
-        // cant actually send email cuz of.env and configurations etc..
+        // use mailtrap and setup .env
         
         Mail::send('emails.contact', $data, function($message) use ($data) {
             $message->to('admin@ehb.be') // Replace with actual admin email
