@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class FaqCategory extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['name'];
 
     public function faqs()

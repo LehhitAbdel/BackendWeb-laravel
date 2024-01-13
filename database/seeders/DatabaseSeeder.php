@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        FaqCategory::factory()->create(['name' => 'Food']);
+        FaqCategory::factory()->create(['name' => 'Drinks']);
+        
         // random users
         User::factory(2)->create();
 
@@ -26,6 +29,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@ehb.be',
             'is_admin' => true,
         ]);
+
 
     }
 
