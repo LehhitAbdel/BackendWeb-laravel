@@ -19,7 +19,28 @@ class DatabaseSeeder extends Seeder
     {
         FaqCategory::factory()->create(['name' => 'Food']);
         FaqCategory::factory()->create(['name' => 'Drinks']);
-        
+
+        // Retrieve the categories
+        $foodCategory = FaqCategory::where('name', 'Food')->first();
+        $drinksCategory = FaqCategory::where('name', 'Drinks')->first();
+
+        // Seed FAQs
+        if ($foodCategory) {
+            Faq::create([
+                'faq_category_id' => $foodCategory->id,
+                'question' => 'Are there vegetarian dishes?',
+                'answer' => 'Yes, there are various salads and fruit dishes.',
+            ]);
+        }
+
+        if ($drinksCategory) {
+            Faq::create([
+                'faq_category_id' => $drinksCategory->id,
+                'question' => 'Are there non sparkling drinks?',
+                'answer' => 'Of course, we have a lot of choices.',
+            ]);
+        }
+
         // random users
         User::factory(2)->create();
 
