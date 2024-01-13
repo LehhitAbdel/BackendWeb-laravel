@@ -27,11 +27,11 @@ class ContactFormController extends Controller
         //TODO send form in email to admin.
         // Prepare the email data
         $data = [
-            'email' => $request->email,
-            'message' => $request->message
+            'email' => $request->get('email'),
+            'content' => $request->get('message')
         ];
 
-        /* cant actually send email cuz of.env and configurations etc..
+        // cant actually send email cuz of.env and configurations etc..
         
         Mail::send('emails.contact', $data, function($message) use ($data) {
             $message->to('admin@ehb.be') // Replace with actual admin email
@@ -39,7 +39,7 @@ class ContactFormController extends Controller
             $message->from($data['email']);
         }); 
         
-        */
+        
 
 
         // Redirect or return response

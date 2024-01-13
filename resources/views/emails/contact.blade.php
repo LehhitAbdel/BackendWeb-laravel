@@ -36,7 +36,7 @@
         </div>
         <div class="content">
             <p><strong>Email:</strong> {{ $email }}</p>
-            <p><strong>Message:</strong> {{ $message }}</p>
+            <p><strong>Message:</strong> {{ $content}}</p>
         </div>
         <div class="footer">
             This email was sent from the website's contact form.
