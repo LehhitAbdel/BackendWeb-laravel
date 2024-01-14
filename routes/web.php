@@ -8,6 +8,8 @@ use App\Http\Controllers\FaqCategoryController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdminController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +64,11 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 
     Route::resource('faq-categories', FaqCategoryController::class);
     Route::resource('faqs', FaqController::class)->except(['index']);
+
+    Route::get('/admin/users', [AdminController::class, 'showUsers'])->name('admin.users');
+    Route::post('/admin/make-admin/{user}', [AdminController::class, 'makeAdmin'])->name('admin.makeAdmin');
+
+
 });
 
 

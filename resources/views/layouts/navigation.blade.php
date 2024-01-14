@@ -28,6 +28,15 @@
                     <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
                         {{ __('About') }}
                     </x-nav-link>
+
+                    @auth
+                        @if(auth()->user()->is_admin)
+                            <x-nav-link :href="route('admin.users')" :active="request()->routeIs('admin.users')">
+                                Users
+                            </x-nav-link>
+                        @endif
+                    @endauth
+
                 </div>
             </div>
             
