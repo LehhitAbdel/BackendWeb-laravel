@@ -41,16 +41,19 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        
+        
         // random users
         User::factory(2)->create();
-
+        
         // Create a specific admin user
         User::factory()->create([
             'name' => 'admin',
             'email' => 'admin@ehb.be',
             'is_admin' => true,
         ]);
-
+        
+        NewsPost::factory()->create();
 
     }
 

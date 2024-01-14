@@ -10,6 +10,7 @@ use Carbon\Carbon;
 
 class NewsPostController extends Controller
 {
+
     public function index()
     {
         $newsPosts = NewsPost::orderBy('published_at', 'desc')->paginate(10);
