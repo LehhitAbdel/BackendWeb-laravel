@@ -19,7 +19,7 @@ public function makeAdmin(User $user)
     $user->is_admin = true;
     $user->save();
 
-    return redirect()->back()->with('success', 'User has been made an admin');
+    return redirect()->back()->with('success', 'User has been made admin');
 }
 
 

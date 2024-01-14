@@ -1,7 +1,21 @@
 <x-app-layout>
-    <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-        <h1 class="text-2xl font-semibold text-gray-900">Users</h1>
+    <x-slot name="header">
+        <div class="flex justify-between items-center">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Manage users') }}
+        </h2>
+    </x-slot>
+
         <div class="mt-8">
+            @if(session('success'))
+            <div class="w-full">
+                <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mt-4" role="alert">
+                    <p class="font-bold">Success</p>
+                    <p>{{ session('success') }}</p>
+                </div>
+            </div>
+            @endif
+
             <div class="flex flex-col">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -41,11 +55,12 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    
 </x-app-layout>
 
