@@ -4,6 +4,12 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Manage users') }}
         </h2>
+
+        <div class="ml-auto my-4">
+            <a href="{{ route('admin.createUser') }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Create New User
+            </a>
+        </div>
     </x-slot>
 
         <div class="mt-8">

@@ -68,6 +68,11 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/admin/users', [AdminController::class, 'showUsers'])->name('admin.users');
     Route::post('/admin/make-admin/{user}', [AdminController::class, 'makeAdmin'])->name('admin.makeAdmin');
 
+    Route::get('/admin/create-user', [AdminController::class, 'createUserForm'])->name('admin.createUser');
+    Route::post('/admin/store-user', [AdminController::class, 'storeUser'])->name('admin.storeUser');
+
+
+
 
 });
 
