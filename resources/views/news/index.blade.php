@@ -23,7 +23,7 @@
                         @foreach ($newsPosts as $post)
                             <div class="border border-gray-200 rounded-lg p-4">
                                 <h2 class="font-bold text-center">{{ $post->title }}</h2>
-                                <img src="{{asset('Storage/' . $post->cover_image) }}" alt="Cover_Image" class="object-cover w-50 h-34">
+                                <img src="{{asset('Storage/' . $post->cover_image) }}" alt="Cover_Image" class="mx-auto w-full max-h-40 md:max-h-48 lg:max-h-52 object-cover" style="max-height: 17rem;">
                                 <div>{{ $post->content }}</div>
                                 <small>Published on: {{ $post->published_at }}</small>
                                 <p>Posted by: <a href="{{ route('user.profile', $post->user->id) }}" class="font-bold underline">{{ $post->user->name }}</a></p>
