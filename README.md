@@ -1,4 +1,5 @@
 # Laravel Project
+All users profile are publicly available. click on "posted by ..." in newspost to see a profile
 
 
 ### Email Configuration with Mailtrap
